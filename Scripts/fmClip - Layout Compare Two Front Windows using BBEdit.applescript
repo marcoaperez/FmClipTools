@@ -5,6 +5,7 @@
 	In the current/frontmost copy of FileMaker (if running multiple copies/versions of the app), copy the layout objects of the two frontmost windows (BOTH MUST BE IN LAYOUT MODE!), then compare the XML, saving each XML to temporary items director, opening in BBEdit, stripping away superficial differences (internal unique keys), then running a BBEdit comparison to show any differences. 
 
 HISTORY:
+	2026-01-16 ( danshockley ): Make fontID generic, since those are different for file-specific reasons. 
 	2025-05-07 ( danshockley ): If the layouts have the same name, use the window names instead, since they might be same layout from different files.
 	2025-01-22 ( danshockley ): When doing the copy steps, brief loop to set/check clipboard so that busy layouts can work. Try to remove temp files before writing to them (though that may not help). Return false for whole script if error. 
 	2024-10-11 ( danshockley ): Added defaultVisPanelKey.
@@ -20,7 +21,8 @@ property debugMode : true
 property grepReplacePairs : {{" key=\"[0-9]+\"", " key=\"9999\""}, Â
 	{" visPanelKey=\"[0-9]+\"", " visPanelKey=\"9999\""}, Â
 	{" defaultVisPanelKey=\"[0-9]+\"", " defaultVisPanelKey=\"9999\""}, Â
-	{" LabelKey=\"[0-9]+\"", " LabelKey=\"9999\""}}
+	{" LabelKey=\"[0-9]+\"", " LabelKey=\"9999\""}, Â
+	{" fontId=\"[0-9]+\"", " fontId=\"9999\""}}
 
 
 on run
